@@ -1,72 +1,133 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Parallax Tropical Fix</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AMOR FATI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet" />
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+
     html, body {
       height: 100%;
       overflow: hidden;
+      background-color: #000;
+      font-family: 'Montserrat', sans-serif;
     }
+
     .hero {
       position: relative;
       width: 100%;
       height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .layer {
+
+    .parallax-layer {
       position: absolute;
-      width: 120%;
-      height: 120%;
+      width: 100%;
+      height: 100%;
       top: 0;
       left: 0;
       background-position: center;
-      background-size: cover;
       background-repeat: no-repeat;
-      pointer-events: none;
+      background-size: cover;
       transition: transform 0.2s ease-out;
+      pointer-events: none;
     }
 
-    /* Fundal: cer */
     #layer1 {
-      background-image: url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1470&q=80');
+      background-image: url('https://images.unsplash.com/photo-1608303588026-58d8d07c5555?auto=format&fit=crop&w=1470&q=80');
       z-index: 1;
     }
 
-    /* Mijloc: munți tropicali */
     #layer2 {
-      background-image: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1470&q=80');
+      background-image: url('https://www.freeiconspng.com/uploads/bullet-png-8.png');
+      background-size: 80px;
+      background-position: center;
+      background-repeat: no-repeat;
       z-index: 2;
+      opacity: 0.95;
     }
 
-    /* Prim-plan: apă */
     #layer3 {
-      background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1470&q=80');
-      z-index: 3;
-      opacity: 0.9;
+      background-image: url('https://images.unsplash.com/photo-1497032205916-ac775f0649ae?auto=format&fit=crop&w=1470&q=80');
+      z-index: 0;
+      opacity: 0.3;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 4;
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: white;
+      letter-spacing: 0.4rem;
+      text-align: center;
+      text-shadow:
+        0 0 5px rgba(255, 255, 255, 0.3),
+        0 0 10px rgba(255, 255, 255, 0.2),
+        0 0 20px rgba(255, 255, 255, 0.1);
+      filter: blur(0.3px);
+      animation: fadeIn 2s ease, pulseGlow 3s infinite ease-in-out alternate;
+      transition: transform 0.1s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes pulseGlow {
+      from {
+        text-shadow:
+          0 0 5px rgba(255, 255, 255, 0.2),
+          0 0 10px rgba(255, 255, 255, 0.1);
+      }
+      to {
+        text-shadow:
+          0 0 8px rgba(255, 255, 255, 0.4),
+          0 0 15px rgba(255, 255, 255, 0.3),
+          0 0 30px rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.5rem;
+        letter-spacing: 0.2rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="hero">
-    <div class="layer" id="layer1"></div>
-    <div class="layer" id="layer2"></div>
-    <div class="layer" id="layer3"></div>
-  </div>
+  <section class="hero">
+    <div class="parallax-layer" id="layer3"></div>
+    <div class="parallax-layer" id="layer1"></div>
+    <div class="parallax-layer" id="layer2"></div>
+    <h1 id="movingText">AMOR FATI</h1>
+  </section>
 
   <script>
-    document.addEventListener('mousemove', (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 200;
-      const y = (e.clientY / window.innerHeight - 0.5) * 200;
+    document.addEventListener('mousemove', function(e) {
+      const x = (e.clientX / window.innerWidth - 0.5) * 30;
+      const y = (e.clientY / window.innerHeight - 0.5) * 30;
 
-      document.getElementById("layer1").style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
-      document.getElementById("layer2").style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-      document.getElementById("layer3").style.transform = `translate(${-x * 0.5}px, ${-y * 0.5}px)`;
+      document.getElementById('layer1').style.transform = `translate(${x}px, ${y}px)`;
+      document.getElementById('layer2').style.transform = `translate(${-x}px, ${-y}px)`;
+      document.getElementById('layer3').style.transform = `translate(${x * 0.5}px, ${y * 0.5}px)`;
+      document.getElementById('movingText').style.transform = `translate(${x * 2}px, ${y * 2}px)`; // 🧠 mai rapid
     });
   </script>
 </body>
