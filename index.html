@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Parallax Refăcut</title>
+  <title>Parallax Real Layers</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -34,29 +34,28 @@
       transition: transform 0.2s ease-out;
     }
 
-    #layer1 {
-      background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80');
+    /* Straturi reale */
+    #sky {
+      background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80'); /* Cer / Stele */
       z-index: 1;
     }
 
-    #layer2 {
-      background-image: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1470&q=80');
+    #mountains {
+      background-image: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=80'); /* Munți */
       z-index: 2;
     }
 
-    #layer3 {
-      background-image: url('https://images.unsplash.com/photo-1524250502761-1ac6f2eab016?auto=format&fit=crop&w=1470&q=80');
-      opacity: 0.35;
+    #lake {
+      background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80'); /* Apă / bărci */
       z-index: 3;
-      mix-blend-mode: screen;
     }
   </style>
 </head>
 <body>
   <section class="hero">
-    <div class="layer" id="layer1"></div>
-    <div class="layer" id="layer2"></div>
-    <div class="layer" id="layer3"></div>
+    <div class="layer" id="sky"></div>
+    <div class="layer" id="mountains"></div>
+    <div class="layer" id="lake"></div>
   </section>
 
   <script>
@@ -64,9 +63,9 @@
       const x = (e.clientX / window.innerWidth - 0.5) * 200;
       const y = (e.clientY / window.innerHeight - 0.5) * 200;
 
-      document.getElementById("layer1").style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
-      document.getElementById("layer2").style.transform = `translate(${x * 0.4}px, ${y * 0.4}px)`;
-      document.getElementById("layer3").style.transform = `translate(${-x * 0.6}px, ${-y * 0.6}px)`;
+      document.getElementById("sky").style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+      document.getElementById("mountains").style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+      document.getElementById("lake").style.transform = `translate(${x * 0.6}px, ${y * 0.6}px)`;
     });
   </script>
 </body>
