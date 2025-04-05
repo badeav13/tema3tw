@@ -23,9 +23,6 @@
       width: 100%;
       height: 100vh;
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
     .parallax-layer {
@@ -42,17 +39,17 @@
     }
 
     #layer1 {
-      background-image: url('https://images.unsplash.com/photo-1608303588026-58d8d07c5555?auto=format&fit=crop&w=1470&q=80'); /* fundal mai întunecat */
+      background-image: url('https://images.unsplash.com/photo-1608303588026-58d8d07c5555?auto=format&fit=crop&w=1470&q=80');
       z-index: 1;
     }
 
     #layer2 {
       background-image: url('https://www.freeiconspng.com/uploads/bullet-png-8.png');
+      background-repeat: no-repeat;
       background-size: 80px;
       background-position: center;
-      background-repeat: no-repeat;
-      z-index: 2;
-      opacity: 0.95;
+      z-index: 3;
+      filter: drop-shadow(0 0 10px red);
     }
 
     #layer3 {
@@ -61,17 +58,27 @@
       opacity: 0.3;
     }
 
-    .hero h1 {
-      position: relative;
-      z-index: 3;
-      color: white;
-      font-size: 3rem;
+    h1 {
+      position: absolute;
+      top: 30px;
+      width: 100%;
+      text-align: center;
+      font-size: 2.5rem;
+      color: #ff4d4d;
+      z-index: 5;
       text-shadow: 0 0 15px red;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.7; }
+      100% { transform: scale(1); opacity: 1; }
     }
 
     @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2rem;
+      h1 {
+        font-size: 1.8rem;
       }
     }
   </style>
@@ -86,8 +93,8 @@
 
   <script>
     document.addEventListener('mousemove', function(e) {
-      const x = (e.clientX / window.innerWidth - 0.5) * 30;
-      const y = (e.clientY / window.innerHeight - 0.5) * 30;
+      const x = (e.clientX / window.innerWidth - 0.5) * 40;
+      const y = (e.clientY / window.innerHeight - 0.5) * 40;
 
       document.getElementById('layer1').style.transform = `translate(${x}px, ${y}px)`;
       document.getElementById('layer2').style.transform = `translate(${-x}px, ${-y}px)`;
