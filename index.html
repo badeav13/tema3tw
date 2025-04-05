@@ -124,10 +124,10 @@
       const x = (e.clientX / window.innerWidth - 0.5) * 30;
       const y = (e.clientY / window.innerHeight - 0.5) * 30;
 
-      document.getElementById('layer1').style.transform = `translate(${x}px, ${y}px)`;
+      document.getElementById('layer1').style.transform = `translate(${x * 1.5}px, ${y * 1.5}px)`; // se mișcă mai repede
       document.getElementById('layer2').style.transform = `translate(${-x}px, ${-y}px)`;
       document.getElementById('layer3').style.transform = `translate(${x * 0.5}px, ${y * 0.5}px)`;
-      document.getElementById('movingText').style.transform = `translate(${x * 2}px, ${y * 2}px)`; // 🧠 mai rapid
+      document.getElementById('movingText').style.transform = `translate(${x * 2}px, ${y * 2}px)`;
     });
   </script>
 </body>
