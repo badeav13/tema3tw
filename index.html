@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Parallax Turbo</title>
+  <title>Parallax Refăcut</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -11,7 +11,6 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
-      font-family: 'Segoe UI', sans-serif;
       background: #000;
     }
 
@@ -32,65 +31,42 @@
       background-repeat: no-repeat;
       background-size: cover;
       pointer-events: none;
-      transition: transform 0.15s ease-out;
+      transition: transform 0.2s ease-out;
     }
 
-    #stars {
+    #layer1 {
       background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80');
       z-index: 1;
     }
 
-    #mountains {
-      background-image: url('https://images.unsplash.com/photo-1587502537745-66e04b2452f3?auto=format&fit=crop&w=1470&q=80');
+    #layer2 {
+      background-image: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1470&q=80');
       z-index: 2;
     }
 
-    #fog {
-      background-image: url('https://images.unsplash.com/photo-1610878180933-cd662fd8d7c0?auto=format&fit=crop&w=1470&q=80');
-      opacity: 0.3;
+    #layer3 {
+      background-image: url('https://images.unsplash.com/photo-1524250502761-1ac6f2eab016?auto=format&fit=crop&w=1470&q=80');
+      opacity: 0.35;
       z-index: 3;
-      mix-blend-mode: lighten;
-    }
-
-    h1 {
-      position: absolute;
-      top: 30px;
-      width: 100%;
-      text-align: center;
-      font-size: 3rem;
-      color: #fff;
-      z-index: 4;
-      text-shadow: 0 0 10px #ff0040;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.05); opacity: 0.7; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    @media (max-width: 768px) {
-      h1 { font-size: 2rem; }
+      mix-blend-mode: screen;
     }
   </style>
 </head>
 <body>
   <section class="hero">
-    <div class="layer" id="stars"></div>
-    <div class="layer" id="mountains"></div>
-    <div class="layer" id="fog"></div>
-    <h1>Parallax Turbo Mode</h1>
+    <div class="layer" id="layer1"></div>
+    <div class="layer" id="layer2"></div>
+    <div class="layer" id="layer3"></div>
   </section>
 
   <script>
     document.addEventListener("mousemove", (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 150;
-      const y = (e.clientY / window.innerHeight - 0.5) * 150;
+      const x = (e.clientX / window.innerWidth - 0.5) * 200;
+      const y = (e.clientY / window.innerHeight - 0.5) * 200;
 
-      document.getElementById("stars").style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-      document.getElementById("mountains").style.transform = `translate(${x * 0.6}px, ${y * 0.6}px)`;
-      document.getElementById("fog").style.transform = `translate(${-x * 0.9}px, ${-y * 0.9}px)`;
+      document.getElementById("layer1").style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+      document.getElementById("layer2").style.transform = `translate(${x * 0.4}px, ${y * 0.4}px)`;
+      document.getElementById("layer3").style.transform = `translate(${-x * 0.6}px, ${-y * 0.6}px)`;
     });
   </script>
 </body>
