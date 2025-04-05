@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Parallax Glonț Custom</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parallax Cinematic</title>
   <style>
     * {
       margin: 0;
@@ -12,10 +12,11 @@
     }
 
     html, body {
+      width: 100%;
       height: 100%;
       overflow: hidden;
-      font-family: Arial, sans-serif;
-      background-color: #000;
+      font-family: 'Segoe UI', sans-serif;
+      background: #000;
     }
 
     .hero {
@@ -25,80 +26,79 @@
       overflow: hidden;
     }
 
-    .parallax-layer {
+    .layer {
       position: absolute;
-      width: 100%;
-      height: 100%;
       top: 0;
       left: 0;
-      background-repeat: no-repeat;
+      width: 120%;
+      height: 120%;
       background-position: center;
+      background-repeat: no-repeat;
       background-size: cover;
+      transition: transform 0.3s ease-out;
       pointer-events: none;
-      transition: transform 0.2s ease-out;
     }
 
-    #layer1 {
-      background-image: url('https://images.unsplash.com/photo-1608303588026-58d8d07c5555?auto=format&fit=crop&w=1470&q=80');
-      z-index: 0;
-    }
-
-    #layer2 {
-      background-image: url('glass.avif');
-      opacity: 0.5;
+    #bg1 {
+      background-image: url('https://images.unsplash.com/photo-1602524209440-ff5c7c8744a6?auto=format&fit=crop&w=1470&q=80');
       z-index: 1;
+      opacity: 0.6;
     }
 
-    #layer3 {
-      background-image: url('https://i.imgur.com/mX6AlRt.png');
-      background-size: 100px;
-      background-repeat: no-repeat;
-      background-position: center;
+    #bg2 {
+      background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1470&q=80');
       z-index: 2;
-      filter: drop-shadow(0 0 15px red);
+      opacity: 0.4;
+    }
+
+    #fg1 {
+      background-image: url('https://images.unsplash.com/photo-1607082349566-187342a3b512?auto=format&fit=crop&w=1470&q=80');
+      z-index: 3;
+      opacity: 0.9;
+      mix-blend-mode: screen;
     }
 
     h1 {
       position: absolute;
-      top: 20px;
+      top: 30px;
       width: 100%;
       text-align: center;
-      font-size: 2.5rem;
-      color: #ff4d4d;
-      z-index: 3;
-      text-shadow: 0 0 10px red;
+      font-size: 3rem;
+      color: #ffffff;
+      text-shadow: 0 0 10px #ff0000;
+      z-index: 4;
       animation: pulse 2s infinite;
     }
 
     @keyframes pulse {
       0% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.05); opacity: 0.7; }
+      50% { transform: scale(1.05); opacity: 0.8; }
       100% { transform: scale(1); opacity: 1; }
     }
 
     @media (max-width: 768px) {
       h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
     }
   </style>
 </head>
 <body>
   <section class="hero">
-    <div class="parallax-layer" id="layer1"></div>
-    <div class="parallax-layer" id="layer2"></div>
-    <div class="parallax-layer" id="layer3"></div>
-    <h1>Țintește precis!</h1>
+    <div class="layer" id="bg1"></div>
+    <div class="layer" id="bg2"></div>
+    <div class="layer" id="fg1"></div>
+    <h1>Experiență Cinematică</h1>
   </section>
 
   <script>
-    document.addEventListener('mousemove', function(e) {
+    document.addEventListener("mousemove", (e) => {
       const x = (e.clientX / window.innerWidth - 0.5) * 40;
       const y = (e.clientY / window.innerHeight - 0.5) * 40;
 
-      document.getElementById('layer1').style.transform = `translate(${x}px, ${y}px)`;
-      document.getElementById('layer2').style.transform = `translate(${x * 0.6}px, ${y * 0.6}px)`;
-      document.getElementById('layer3').style.transform = `translate(${-x}px, ${-y}px)`;
+      document.getElementById("bg1").style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+      document.getElementById("bg2").style.transform = `translate(${x * 0.6}px, ${y * 0.6}px)`;
+      document.getElementById("fg1").style.transform = `translate(${-x * 1.2}px, ${-y * 1.2}px)`;
     });
   </script>
 </body>
